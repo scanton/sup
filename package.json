@@ -1,0 +1,32 @@
+{
+  "name": "sup",
+  "version": "0.0.1",
+  "description": "Desktop Dashboard Monitor for Websites and Web Services",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scanton/sup.git"
+  },
+  "keywords": [
+    "uptime",
+    "website",
+    "web service",
+    "dashboard",
+    "monitor"
+  ],
+  "author": "Satori Canton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scanton/sup/issues"
+  },
+  "homepage": "https://github.com/scanton/sup",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "electron-prebuilt": "^1.4.13",
+    "fs-extra": "^6.0.1"
+  }
+}
