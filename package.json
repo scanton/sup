@@ -1,7 +1,7 @@
 {
   "name": "sup",
   "version": "0.0.1",
-  "description": "Desktop Dashboard Monitor for Websites and Web Services",
+  "description": "Desktop Dashboard Monitor for Websites, Web Services and Jira",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -27,6 +27,8 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "electron-prebuilt": "^1.4.13",
-    "fs-extra": "^6.0.1"
+    "fs-extra": "^6.0.1",
+    "md5": "^2.2.1",
+    "request": "^2.85.0"
   }
 }
