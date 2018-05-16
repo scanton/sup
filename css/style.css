@@ -5,6 +5,8 @@
 }
 body {
 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	background: #f7f7f7;
+	color: #666;
 }
 h1 {
 	font-size: 34px;
@@ -16,36 +18,54 @@ button {
 	font-size: 12pt;
 	padding: 0;
 	position: relative;
-	border-radius: 5px;
-	background: #3fad3f;
-	color: white;
+	border-radius: 15px;
+	background: #ddd;
+	color: #666;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px #BBB;
 }
 button:active {
-	background: #349234;
+	background: #c2bcd4;
+	box-shadow: 1px 1px 1px #BBB;
 }
 button:active .icon {
-	background: #349234;
+	background: #c2bcd4;
 }
 button .icon {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	width: 34px;
-	background: #3fad3f;
-	color: white;
-	height: 100%;
-	padding-top: 0;
+	padding-top: 2px;
+	padding-left: 2px;
 	border-right: 1px solid #a6caa6;
 }
 button .icon svg {
-	padding-top: 9px;
+	padding-top: 8px;
 }
 button .label {
 	display: inline-block;
 	padding: .5em 1em;
 	padding-left: 50px;
+}
+button.most-likely-action {
+	background: #3fad3f;
+	color: white;
+}
+button.most-likely-action .icon {
+	color: white;
+	background: #3fad3f;
+}
+button.most-likely-action:active {
+	background: #349234;
+}
+button.most-likely-action:active .icon {
+	background: #349234;
+}
+.clear {
+	clear: both;
 }
 .work-area {
 	position: absolute;
@@ -60,7 +80,7 @@ button .label {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: #ddd7ed;
+	background: #ddd;
 	padding: 4px 15px;
 }
 .left-nav {
@@ -81,11 +101,10 @@ button .label {
 	top: 0;
 	left: 0;
 	right: 0;
-	background: #ddd7ed;
+	background: #ddd;
 	padding: 4px 15px;
 }
 .label {
-	font-weight: bold;
 	padding: .25em .5em;
 }
 .dashboard {
@@ -109,17 +128,111 @@ ul.radio-options {
 	list-style: none;
 	padding: .25em;
 	border-radius: 15px;
-	background: linear-gradient(to bottom, rgba(242,245,246,1) 0%, rgba(228,227,237,1) 37%, rgba(221,215,237,1) 100%);
+	background: linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(228,228,228,1) 37%, rgba(221,221,221,1) 100%);
+	
 }
 ul.radio-options li {
 	display: inline-block;
 	padding: .25em 1em;
 	cursor: pointer;
+	border-radius: 12px;
+	border: 1px solid #BBB;
+	-webkit-transition: all 0.3s ease;
+	margin: 0 .25em;
+	box-shadow: 2px 2px 2px #BBB;
+}
+ul.radio-options li:first-of-type {
+	margin-left: 0;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+ul.radio-options li:last-of-type {
+	margin-right: 0;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
 }
 ul.radio-options li.selected {
-	border-radius: 12px;
-	font-weight: bold;
+	box-shadow: inset 1px 1px 1px #999;
 	border: 1px solid #BBB;
 	background: white;
+}
+.input-collection {
+	border: 1px solid #BBB;
+	border-radius: 10px;
+	padding: 1em;
+	font-size: 12pt;
 	box-shadow: 2px 2px 2px #BBB;
+}
+.input-collection input {
+	border: 1px solid #999;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	padding: .5em .25em;
+	font-size: 12pt;
+	display: table-cell;
+	width: 100%;
+	text-align: center;
+}
+.input-collection .input-set input {
+	margin-left: -6px;
+}
+.input-collection .input-label {
+	display: inline-block;
+	width: 150px;
+	background: #ddd;
+	border: 1px solid #999;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	padding: .5em .25em;
+	font-size: 12pt;
+	text-align: center;
+	display: table-cell;
+}
+.input-collection .input-set {
+	display: table;
+	width: 100%;
+}
+.input-collection button {
+	float: right;
+	margin-right: 1em;
+}
+.input-collection button:first-of-type {
+	margin-right: 0;
+}
+.input-collection .input-set, .name-value-mulit-input {
+	margin-bottom: 10px;
+}
+.rest-verb-selector, .add-widget {
+	text-align: center;
+}
+.type-selector {
+	margin-bottom: 10px;
+}
+.add-service-widget .parameters {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+.add-service-widget .parameters .flex-item {
+	flex-wrap: nowrap;
+	flex-grow: 1;
+	padding: 0.5em;
+}
+.name-value-mulit-input {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+.name-value-mulit-input input {
+	flex-wrap: nowrap;
+	flex-grow: 1;
+	border-radius: 0;
+}
+.name-value-mulit-input input:first-of-type {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+.name-value-mulit-input input:last-of-type {
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
 }

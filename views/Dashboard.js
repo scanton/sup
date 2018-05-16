@@ -4,9 +4,9 @@
 		<div class="dashboard">
 			<button v-if="!isAddWidgetVisible" v-on:click="handleAddWidget">
 				<span class="icon"><i class="fas fa-plus"></i></span>
-				<span class="label">Add Widget</span>
+				<span class="label">Add Monitor</span>
 			</button>
-			<add-widget v-if="isAddWidgetVisible"></add-widget>
+			<add-widget v-on:cancel="handleCancelAddWidget" v-if="isAddWidgetVisible"></add-widget>
 		</div>
 	`;
 	
@@ -21,10 +21,11 @@
 			}
 		},
 		methods: {
-			handleAddWidget: function(e) {
-				e.preventDefault();
-				console.log("add widget");
+			handleAddWidget: function() {
 				this.isAddWidgetVisible = true;
+			},
+			handleCancelAddWidget: function() {
+				this.isAddWidgetVisible = false;
 			}
 		}
 	});

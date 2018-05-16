@@ -1,19 +1,17 @@
 (function() {
 	var componentName = 'add-widget';
 	var s = `
-		<div class="add-widget">
-			<span class="label">Widget Type</span>
-			<ul class="radio-options">
-				<li 
-					v-on:click="handleTypeChange(type)" 
-					v-for="type in widgetTypes"
-					v-bind:class="{selected: type == selectedType}">
-					{{type}}
-				</li>
-			</ul>
-			<add-jira-widget v-if="selectedType == 'Jira'"></add-jira-widget>
-			<add-service-widget v-if="selectedType == 'Service'"></add-service-widget>
-			<add-website-widget v-if="selectedType == 'Website'"></add-website-widget>
+		<div class="add-widget input-collection">
+			<div class="input-set">
+				<span class="input-label">Name</span>
+				<input type="text" name="name" />
+			</div>
+			<div class="input-set">
+				<radio-set v-on:change-value="handleTypeChange" label="Monitor Type" v-bind:selectedOption="selectedType" v-bind:options="['Jira', 'Rest Service', 'Website']"></radio-set>
+			</div>
+			<add-jira-widget v-on:cancel="handleCancel" v-if="selectedType == 'Jira'"></add-jira-widget>
+			<add-service-widget v-on:cancel="handleCancel" v-if="selectedType == 'Rest Service'"></add-service-widget>
+			<add-website-widget v-on:cancel="handleCancel" v-if="selectedType == 'Website'"></add-website-widget>
 		</div>
 	`;
 	
@@ -24,13 +22,15 @@
 		template: s,
 		data: function() {
 			return {
-				selectedType: "Website",
-				widgetTypes: ["Jira", "Service", "Website"]
+				selectedType: "Website"
 			}
 		},
 		methods: {
 			handleTypeChange: function(type) {
 				this.selectedType = type;
+			},
+			handleCancel: function() {
+				this.$emit('cancel');
 			}
 		}
 	});

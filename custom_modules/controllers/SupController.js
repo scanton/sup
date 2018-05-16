@@ -28,6 +28,10 @@ module.exports = class SupController extends EventEmitter {
 		});
 	}
 
+	addMonitor(details) {
+		console.log("add monitor", details);
+	}
+
 	setCookie(name, value) {
 		console.log(name + ": " + value);
 	}
