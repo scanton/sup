@@ -2,7 +2,7 @@
 	var componentName = 'main-nav';
 	var s = `
 		<div class="main-nav">
-		main nav
+		&nbsp;
 		</div>
 	`;
 	

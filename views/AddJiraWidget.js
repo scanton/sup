@@ -48,7 +48,9 @@
 				var port = $this.find("input[name='port']").val();
 				var username = $this.find("input[name='username']").val();
 				var password = $this.find("input[name='password']").val();
-				sup.addMonitor({type: "Jira", host, port, username, password});
+				var name = $(".add-widget input[name='name']").val();
+				sup.addMonitor({monitorType: "Jira", host, port, username, password, name: name});
+				this.$emit('cancel');
 			},
 			handleCancel: function() {
 				this.$emit('cancel');

@@ -57,10 +57,28 @@
 				var url = $this.find("input[name='url']").val();
 				var verb = $this.find(".verb-radio .radio-options").attr("data-selected");
 				var headers = [];
+				$(".header-params").find(".multi-input-group").each(function() {
+					var $this = $(this);
+					var name = $this.find("input[name='name']").val();
+					var value = $this.find("input[name='value']").val();
+					if(name && value) {
+						headers.push({name: name, value: value});
+					}
+				});
 				var body = [];
+				$(".body-params").find(".multi-input-group").each(function() {
+					var $this = $(this);
+					var name = $this.find("input[name='name']").val();
+					var value = $this.find("input[name='value']").val();
+					if(name && value) {
+						body.push({name: name, value: value});
+					}
+				});
 				var assertion = $this.find(".assertion-radio .radio-options").attr("data-selected");
 				var expectation = $this.find("input[name='expected-result']").val();
-				sup.addMonitor({type: "Rest Service", url: url, verb: verb, headers: headers, body: body, assertion: assertion, expectation: expectation});
+				var name = $(".add-widget input[name='name']").val();
+				sup.addMonitor({monitorType: "Rest Service", url: url, verb: verb, headers: headers, body: body, assertion: assertion, expectation: expectation, name: name});
+				this.$emit('cancel');
 			},
 			handleCancel: function() {
 				this.$emit('cancel');

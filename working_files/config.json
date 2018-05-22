@@ -1,1 +1,42 @@
-{}
+{
+	"monitors": {
+		"website": [
+			{
+				"monitorType": "Website",
+				"url": "https://local.lifeplus.com/uk/en/web-page/our-company",
+				"query": "#footer .copyright",
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "Lifeplus.com (local)",
+				"createTime": 1527017574331,
+				"id": "9f692b018191ec860e4a8ee318ec3dba"
+			}
+		],
+		"jira": [
+			{
+				"monitorType": "Jira",
+				"host": "https://helpdesk.lifeplus.com",
+				"port": "8443",
+				"username": "Satori.Canton",
+				"password": "ie7w2sp*2xkde",
+				"name": "Lifeplus Projects",
+				"createTime": 1527018846375,
+				"id": "87f0e8489176786a58b40bea35bc9dab"
+			}
+		],
+		"service": [
+			{
+				"monitorType": "Rest Service",
+				"url": "https://wsrest-us.lifeplus.com/lpaccess/api/v1/ASAPs/CheckLPFDonationTypes",
+				"verb": "GET",
+				"headers": [],
+				"body": [],
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "Access Service",
+				"createTime": 1527019623655,
+				"id": "4761b204b12e2f0eab9adb1346d100c7"
+			}
+		]
+	}
+}

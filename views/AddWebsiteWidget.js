@@ -48,7 +48,9 @@
 				var query = $this.find("input[name='css-query']").val();
 				var assertion = $this.find(".assertion-radio .radio-options").attr("data-selected");
 				var expectation = $this.find("input[name='expected-result']").val();
-				sup.addMonitor({type: "Website", url: url, query: query, assertion: assertion, expectation: expectation});
+				var name = $(".add-widget input[name='name']").val();
+				sup.addMonitor({monitorType: "Website", url: url, query: query, assertion: assertion, expectation: expectation, name: name});
+				this.$emit('cancel');
 			}
 		}
 	});

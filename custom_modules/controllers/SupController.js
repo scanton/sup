@@ -4,10 +4,12 @@ module.exports = class SupController extends EventEmitter {
 		super();
 		this.viewController = controllers.viewController;
 		this.configModel = models.configModel;
+		this.configModel.subscribe("data", this.handleConfigData.bind(this));
 		this.cookieModel = models.cookieModel;
 		this._controllers = controllers;
 		this._models = models;
 
+		/*
 		var request = require('request');
 
 		request.post('https://helpdesk.lifeplus.com:8443/rest/auth/1/session', {form: {
@@ -26,16 +28,20 @@ module.exports = class SupController extends EventEmitter {
 				}
 			}
 		});
+		*/
 	}
 
 	addMonitor(details) {
-		console.log("add monitor", details);
+		this.configModel.addMonitor(details);
 	}
 
 	setCookie(name, value) {
 		console.log(name + ": " + value);
 	}
 
+	handleConfigData(data) {
+		this._call("monitor-list", "setMonitors", data);
+	}
 	handleError(err) {
 		if(err) {
 			console.error(err);

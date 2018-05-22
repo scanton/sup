@@ -14,7 +14,12 @@ h1 {
     font-weight: 500;
     letter-spacing: .01em;
 }
+h2, h3 {
+	font-weight: 300;
+	letter-spacing: .1ex;
+}
 button {
+	border: 1px solid #ccc;
 	font-size: 12pt;
 	padding: 0;
 	position: relative;
@@ -25,11 +30,11 @@ button {
 	box-shadow: 2px 2px 2px #BBB;
 }
 button:active {
-	background: #c2bcd4;
+	background: #EEE;
 	box-shadow: 1px 1px 1px #BBB;
 }
 button:active .icon {
-	background: #c2bcd4;
+	background: #EEE;
 }
 button .icon {
 	border-top-left-radius: 15px;
@@ -66,6 +71,9 @@ button.most-likely-action:active .icon {
 }
 .clear {
 	clear: both;
+}
+.pull-right {
+	float: right;
 }
 .work-area {
 	position: absolute;
@@ -137,9 +145,14 @@ ul.radio-options li {
 	cursor: pointer;
 	border-radius: 12px;
 	border: 1px solid #BBB;
-	-webkit-transition: all 0.3s ease;
 	margin: 0 .25em;
 	box-shadow: 2px 2px 2px #BBB;
+	-webkit-transition: all 0.3s ease;
+}
+ul.radio-options li:active {
+	box-shadow: inset 1px 1px 1px #999;
+	border: 1px solid #BBB;
+	background: white;
 }
 ul.radio-options li:first-of-type {
 	margin-left: 0;
@@ -158,7 +171,7 @@ ul.radio-options li.selected {
 }
 .input-collection {
 	border: 1px solid #BBB;
-	border-radius: 10px;
+	border-radius: 25px;
 	padding: 1em;
 	font-size: 12pt;
 	box-shadow: 2px 2px 2px #BBB;
@@ -204,6 +217,13 @@ ul.radio-options li.selected {
 }
 .rest-verb-selector, .add-widget {
 	text-align: center;
+	position: absolute;
+	top: 26px;
+	right: 26px;
+	left: 300px;
+}
+.rest-verb-selector, .add-widget h2 {
+	margin-bottom: .75em;
 }
 .type-selector {
 	margin-bottom: 10px;
@@ -218,21 +238,54 @@ ul.radio-options li.selected {
 	flex-grow: 1;
 	padding: 0.5em;
 }
-.name-value-mulit-input {
+.multi-input-group {
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
 }
-.name-value-mulit-input input {
+.multi-input-group input {
 	flex-wrap: nowrap;
 	flex-grow: 1;
 	border-radius: 0;
 }
-.name-value-mulit-input input:first-of-type {
+.name-value-mulit-input .multi-input-group:first-of-type  input:first-of-type {
 	border-top-left-radius: 15px;
+}
+.name-value-mulit-input .multi-input-group:last-of-type  input:first-of-type {
 	border-bottom-left-radius: 15px;
 }
-.name-value-mulit-input input:last-of-type {
+.name-value-mulit-input .multi-input-group:first-of-type input:last-of-type {
 	border-top-right-radius: 15px;
+}
+.name-value-mulit-input .multi-input-group:last-of-type input:last-of-type {
+	border-bottom-right-radius: 15px;
+}
+.monitor-list {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	overflow: scroll;
+	padding: 1em;
+}
+.monitor-list .monitor-group {
+	margin: .5em 0;
+}
+.monitor-list .monitor-group .monitor {
+	border: 1px solid #ccc;
+	padding: .75em 1em;
+	margin-left: -1em;
+	background: #ddd;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px #BBB;
+}
+.monitor-list .monitor-group .monitor:active {
+	background: #EEE;
+	box-shadow: 1px 1px 1px #BBB;
+}
+.monitor-list .monitor-group .monitor:first-of-type {
+	border-top-right-radius: 15px;
+}
+.monitor-list .monitor-group .monitor:last-of-type {
 	border-bottom-right-radius: 15px;
 }

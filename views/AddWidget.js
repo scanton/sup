@@ -2,6 +2,7 @@
 	var componentName = 'add-widget';
 	var s = `
 		<div class="add-widget input-collection">
+			<h2>Add Monitor</h2>
 			<div class="input-set">
 				<span class="input-label">Name</span>
 				<input type="text" name="name" />
