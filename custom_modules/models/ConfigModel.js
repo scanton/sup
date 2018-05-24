@@ -27,6 +27,8 @@ module.exports = class ConfigModel extends AbstractModel {
 			return this.addJiraMonitor(data);
 		} else if(data.monitorType == "Rest Service") {
 			return this.addServiceMonitor(data);
+		} else if(data.monitorType == "Soap Service") {
+			return this.addSoapServiceMonitor(data);
 		} else if(data.monitorType == "Website") {
 			return this.addWebsiteMonitor(data);
 		}
@@ -44,6 +46,23 @@ module.exports = class ConfigModel extends AbstractModel {
 			data.createTime = new Date().getTime();
 			data.id = this.md5(JSON.stringify(data));
 			this._config.monitors.service.push(data);
+			this.saveConfig();
+		} else {
+			sup.handleError({type: "Invalid Input Data", data: data});
+		}
+	}
+	addSoapServiceMonitor(data) {
+		console.log(this._strip(data));
+		if(data.name && data.url && data.monitorType == "Soap Service") {
+			if(!this._config.monitors) {
+				this._config.monitors = {};
+			}
+			if(!this._config.monitors.soap) {
+				this._config.monitors.soap = [];
+			} 
+			data.createTime = new Date().getTime();
+			data.id = this.md5(JSON.stringify(data));
+			this._config.monitors.soap.push(data);
 			this.saveConfig();
 		} else {
 			sup.handleError({type: "Invalid Input Data", data: data});

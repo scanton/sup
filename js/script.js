@@ -13,6 +13,7 @@ const SettingsModel = require(__dirname + '/custom_modules/models/SettingsModel.
 const JiraMonitorController = require(__dirname + '/custom_modules/controllers/JiraMonitorController.js');
 const ServiceMonitorController = require(__dirname + '/custom_modules/controllers/ServiceMonitorController.js');
 const WebsiteMonitorController = require(__dirname + '/custom_modules/controllers/WebsiteMonitorController.js');
+const SoapMonitorController = require(__dirname + '/custom_modules/controllers/SoapMonitorController.js');
 const SupController = require(__dirname + '/custom_modules/controllers/SupController.js');
 const ViewController = require(__dirname + '/custom_modules/controllers/ViewController.js');
 const viewController = new ViewController();
@@ -21,7 +22,8 @@ const views = {
 	viewController: viewController,
 	jiraMonitorController: new JiraMonitorController(),
 	serviceMonitorController: new ServiceMonitorController(),
-	websiteMonitorController: new WebsiteMonitorController()
+	websiteMonitorController: new WebsiteMonitorController(),
+	soapMonitorController: new SoapMonitorController()
 };
 const models = {
 	configModel: new ConfigModel(), 

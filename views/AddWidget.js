@@ -8,10 +8,11 @@
 				<input type="text" name="name" />
 			</div>
 			<div class="input-set">
-				<radio-set v-on:change-value="handleTypeChange" label="Monitor Type" v-bind:selectedOption="selectedType" v-bind:options="['Jira', 'Rest Service', 'Website']"></radio-set>
+				<radio-set v-on:change-value="handleTypeChange" label="Monitor Type" v-bind:selectedOption="selectedType" v-bind:options="['Jira', 'Rest Service', 'Soap Service', 'Website']"></radio-set>
 			</div>
 			<add-jira-widget v-on:cancel="handleCancel" v-if="selectedType == 'Jira'"></add-jira-widget>
 			<add-service-widget v-on:cancel="handleCancel" v-if="selectedType == 'Rest Service'"></add-service-widget>
+			<add-soap-service-widget v-on:cancel="handleCancel" v-if="selectedType == 'Soap Service'"></add-soap-service-widget>
 			<add-website-widget v-on:cancel="handleCancel" v-if="selectedType == 'Website'"></add-website-widget>
 		</div>
 	`;

@@ -1,8 +1,8 @@
 (function() {
-	var componentName = 'active-monitor';
+	var componentName = 'active-monitors';
 	var s = `
-		<div class="active-monitor">
-			&nbsp;
+		<div class="active-monitors">
+			
 		</div>
 	`;
 	

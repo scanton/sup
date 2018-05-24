@@ -77,15 +77,79 @@
 		"service": [
 			{
 				"monitorType": "Rest Service",
+				"url": "https://wsrest-uk.lifeplus.com/lpaccess/api/v1/ASAPs/CheckLPFDonationTypes",
+				"verb": "GET",
+				"headers": [],
+				"body": [],
+				"assertion": "Array Longer Than",
+				"expectation": "1",
+				"name": "Access Service (uk)",
+				"createTime": 1527019623666,
+				"id": "2e2f0eab9476100c71b204b1adb1346d"
+			},
+			{
+				"monitorType": "Rest Service",
 				"url": "https://wsrest-us.lifeplus.com/lpaccess/api/v1/ASAPs/CheckLPFDonationTypes",
 				"verb": "GET",
 				"headers": [],
 				"body": [],
-				"assertion": "String Not Empty",
-				"expectation": "",
-				"name": "Access Service",
+				"assertion": "Array Longer Than",
+				"expectation": "1",
+				"name": "Access Service (us)",
 				"createTime": 1527019623655,
 				"id": "4761b204b12e2f0eab9adb1346d100c7"
+			},
+			{
+				"monitorType": "Rest Service",
+				"url": "https://wsrest-uk.lifeplus.com/ReplicatedSiteREST/api/V1/BySite/todd",
+				"verb": "GET",
+				"headers": [
+					{
+						"name": "key",
+						"value": "93903bdb-326b-4854-8d36-425866881952"
+					}
+				],
+				"body": [],
+				"assertion": "Equals",
+				"expectation": "0",
+				"name": "ReplicatedSiteRest (uk)",
+				"query": "Result",
+				"createTime": 1527191291872,
+				"id": "9ff943b79e1aae76660b5965b0a26830"
+			},
+			{
+				"monitorType": "Rest Service",
+				"url": "https://wsrest-us.lifeplus.com/ReplicatedSiteREST/api/V1/BySite/todd",
+				"verb": "GET",
+				"headers": [
+					{
+						"name": "key",
+						"value": "93903bdb-326b-4854-8d36-425866881952"
+					}
+				],
+				"body": [],
+				"assertion": "Equals",
+				"expectation": "0",
+				"name": "ReplicatedSiteRest (us)",
+				"query": "Result",
+				"createTime": 1527191291877,
+				"id": "268309ff943b79e1aae76660b5965b0a"
+			}
+		],
+		"soap": [
+			{
+				"monitorType": "Soap Service",
+				"url": "https://wssoap-uk.lifeplus.com/LPIStoreService/LPIStoreService.svc?wsdl",
+				"name": "LPIStoreSvc (uk)",
+				"createTime": 1527189819238,
+				"id": "3659febe624b4f3b6edee9b1e102f35f"
+			},
+			{
+				"monitorType": "Soap Service",
+				"url": "https://wssoap-us.lifeplus.com/LPIStoreService/LPIStoreService.svc?wsdl",
+				"name": "LPIStoreSvc (us)",
+				"createTime": 1527189848651,
+				"id": "8451561333733587a361f091138ffc7b"
 			}
 		]
 	}

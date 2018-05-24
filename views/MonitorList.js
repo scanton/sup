@@ -10,8 +10,15 @@
 					<div class="response-time">{{getResponseTime(monitor)}}</div>
 				</div>
 			</div>
+			<div v-if="soapMonitors.length" class="monitor-group soap-service-monitor-group">
+				<h3>Soap Services</h3>
+				<div v-for="monitor in soapMonitors" class="monitor soap-service-monitor">
+					<led-indicator v-bind:status="getSoapStatus(monitor)"></led-indicator> {{monitor.name}}
+					<div class="response-time">{{getResponseTime(monitor)}}</div>
+				</div>
+			</div>
 			<div v-if="serviceMonitors.length" class="monitor-group service-monitor-group">
-				<h3>Services</h3>
+				<h3>Rest Services</h3>
 				<div v-for="monitor in serviceMonitors" class="monitor service-monitor">
 					<led-indicator v-bind:status="getServiceStatus(monitor)"></led-indicator> {{monitor.name}}
 					<div class="response-time">{{getResponseTime(monitor)}}</div>
@@ -37,9 +44,11 @@
 				jiraMonitors: [],
 				serviceMonitors: [],
 				websiteMonitors: [],
+				soapMonitors: [],
 				jiraStatus: {},
 				serviceStatus: {},
 				websiteStatus: {},
+				soapStatus: {},
 				responseThreshold: 3500
 			}
 		},
@@ -69,6 +78,8 @@
 						return this.serviceStatus[id].responseTime;
 					} else if(this.websiteStatus[id]) {
 						return this.websiteStatus[id].responseTime;
+					} else if(this.soapStatus[id]) {
+						return this.soapStatus[id].responseTime;
 					}
 					return "";
 				}
@@ -76,6 +87,22 @@
 			getServiceStatus: function(monitor) {
 				if(this.serviceStatus[monitor.id]) {
 					var status = this.serviceStatus[monitor.id];
+					var a = [];
+					if(status.responseTime > this.responseThreshold) {
+						a.push("slow-response");
+					}
+					if(status.passedTest) {
+						a.push("test-passed");
+					} else {
+						a.push("test-failed");
+					}
+					return a.join(" ");
+				}
+				return "";
+			},
+			getSoapStatus: function(monitor) {
+				if(this.soapStatus[monitor.id]) {
+					var status = this.soapStatus[monitor.id];
 					var a = [];
 					if(status.responseTime > this.responseThreshold) {
 						a.push("slow-response");
@@ -116,12 +143,16 @@
 					if(data.monitors.service) {
 						this.serviceMonitors = data.monitors.service;
 					}
+					if(data.monitors.soap) {
+						this.soapMonitors = data.monitors.soap;
+					}
 				}
 			},
 			setStatus: function(data) {
 				this.jiraStatus = data.jiraStatus;
 				this.serviceStatus = data.serviceStatus;
 				this.websiteStatus = data.websiteStatus;
+				this.soapStatus = data.soapStatus;
 			}
 		}
 	});

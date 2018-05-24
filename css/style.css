@@ -125,6 +125,9 @@ button.most-likely-action:active .icon {
 	-webkit-transition: all 0.3s ease;
 	background: #F5F5F5;
 }
+.dashboard .nav-buttons {
+	margin: 10px 0;
+}
 .dashboard .nav-buttons button {
 	margin-left: 1em;
 }
@@ -133,6 +136,15 @@ button.most-likely-action:active .icon {
 }
 .settings-is-visible .dashboard {
 	right: 300px;
+}
+.dashboard .active-monitors {
+	position: absolute;
+	border: 2px dashed #999;
+	top: 72px;
+	right: 26px;
+	bottom: 26px;
+	left: 300px;
+	border-radius: 20px;
 }
 ul.radio-options {
 	border: 1px solid #CCC;
@@ -222,7 +234,7 @@ ul.radio-options li.selected {
 .rest-verb-selector, .add-widget {
 	text-align: center;
 	position: absolute;
-	top: 56px;
+	top: 72px;
 	right: 26px;
 	left: 300px;
 }

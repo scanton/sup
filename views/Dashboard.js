@@ -7,14 +7,19 @@
 					<span class="icon"><i class="fas fa-tv"></i></span>
 					<span class="label">Play Slideshow</span>
 				</button>
+				<button class="show-dashboard-button pull-right" v-if="isAddWidgetVisible" v-on:click="handleCancelAddWidget">
+					<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+					<span class="label">Show Dashboard</span>
+				</button>
 				<button class="add-monitor-button pull-right" v-if="!isAddWidgetVisible" v-on:click="handleAddWidget">
 					<span class="icon"><i class="fas fa-plus"></i></span>
 					<span class="label">Add Monitor</span>
 				</button>
+				<div class="clear"></div>
 			</div>
 			<add-widget v-on:cancel="handleCancelAddWidget" v-if="isAddWidgetVisible"></add-widget>
 			<monitor-list></monitor-list>
-			<active-monitors></active-monitors>
+			<active-monitors v-show="!isAddWidgetVisible"></active-monitors>
 		</div>
 	`;
 	

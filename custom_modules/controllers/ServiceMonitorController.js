@@ -5,29 +5,42 @@ module.exports = class ServiceMonitorController extends AbstractMonitorControlle
 		this.request = require('request');
 	}
 	_checkMonitor(detail, callback) {
-		console.log(this._strip(detail));
-		/*
 		if(detail.url) {
+			var requestDetails = { url: detail.url }
 			var requestTime = new Date().getTime();
-			this.request(detail.url, (error, response, html) => {
-				var responseTime = new Date().getTime();
-				var $site = this.cheerio.load(html);
-				var testValue = $site(detail.query).text();
-				var passedTest = false;
-				if(detail.assertion == "String Not Empty") {
-					passedTest = Boolean(testValue.length);
-				} else if(detail.assertion == "Not Null") {
-					passedTest = Boolean(testValue);
-				} else if(detail.assertion == "Less Than") {
-					passedTest = Boolean(Number(testValue) < Number(detail.expectation));
-				} else if(detail.assertion == "Greater Than") {
-					passedTest = Boolean(Number(testValue) > Number(detail.expectation));
-				} else if(detail.assertion == "Equals") {
-					passedTest = Boolean(testValue == detail.expectation);
+			if(detail.headers && detail.headers.length) {
+				var headers = {};
+				for(var h in detail.headers) {
+					headers[detail.headers[h].name] = detail.headers[h].value;
 				}
-				callback(detail.id, {passedTest: passedTest, responseTime: responseTime - requestTime});
-			});
+				requestDetails.headers = headers;
+			}
+			if(detail.body && detail.body.length) {
+				var body = {};
+				for(var b in detail.body) {
+					body[detail.body[b].name] = detail.body[b].value;
+				}
+				requestDetails.body = body;
+			}
+			if(detail.verb == "GET") {
+				this.request(requestDetails, (error, response, html) => {
+					if(html) {
+						var result = JSON.parse(html);
+					}
+					var responseTime = new Date().getTime();
+					var passedTest = false;
+					if(detail.assertion == "Array Longer Than") {
+						passedTest = result && result.length && result.length > Number(detail.expectation);
+					} else if(detail.assertion == "Equals") {
+						passedTest = result && result[detail.query] == Number(detail.expectation);
+					} else {
+						passedTest = !error;
+					}
+					callback(detail.id, {passedTest: passedTest, responseTime: responseTime - requestTime});
+				});
+			} else {
+				console.log("need to implement " + detail.verb + " in ServiceMonitorController");
+			}
 		}
-		*/
 	}
 }

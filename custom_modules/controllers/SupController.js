@@ -5,9 +5,11 @@ module.exports = class SupController extends EventEmitter {
 		this.jiraMonitorController = controllers.jiraMonitorController;
 		this.serviceMonitorController = controllers.serviceMonitorController;
 		this.websiteMonitorController = controllers.websiteMonitorController;
+		this.soapMonitorController = controllers.soapMonitorController;
 		this.jiraMonitorController.subscribe("status", this.handleJiraStatusData.bind(this));
 		this.serviceMonitorController.subscribe("status", this.handleServiceStatusData.bind(this));
 		this.websiteMonitorController.subscribe("status", this.handleWebsiteStatusData.bind(this));
+		this.soapMonitorController.subscribe("status", this.handleSoapStatusData.bind(this));
 		this.viewController = controllers.viewController;
 		this.configModel = models.configModel;
 		this.configModel.subscribe("data", this.handleConfigData.bind(this));
@@ -19,6 +21,7 @@ module.exports = class SupController extends EventEmitter {
 		this._jiraStatus = {};
 		this._serviceStatus = {};
 		this._websiteStatus = {};
+		this._soapStatus = {};
 		/*
 		var request = require('request');
 
@@ -49,20 +52,25 @@ module.exports = class SupController extends EventEmitter {
 			this.jiraMonitorController.setMonitors(data.monitors.jira);
 			this.serviceMonitorController.setMonitors(data.monitors.service);
 			this.websiteMonitorController.setMonitors(data.monitors.website);
+			this.soapMonitorController.setMonitors(data.monitors.soap);
 		}
 		this._call("monitor-list", "setMonitors", data);
 	}
 	handleJiraStatusData(data) {
 		this._jiraStatus = data;
-		this._call("monitor-list", "setStatus", {jiraStatus: data, serviceStatus: this._serviceStatus, websiteStatus: this._websiteStatus});
+		this._call("monitor-list", "setStatus", {jiraStatus: data, serviceStatus: this._serviceStatus, websiteStatus: this._websiteStatus, soapStatus: this._soapStatus});
 	}
 	handleServiceStatusData(data) {
 		this._serviceStatus = data;
-		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: data, websiteStatus: this._websiteStatus});
+		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: data, websiteStatus: this._websiteStatus, soapStatus: this._soapStatus});
 	}
 	handleWebsiteStatusData(data) {
 		this._websiteStatus = data;
-		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: this._serviceStatus, websiteStatus: data});
+		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: this._serviceStatus, websiteStatus: data, soapStatus: this._soapStatus});
+	}
+	handleSoapStatusData(data) {
+		this._soapStatus = data;
+		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: this._serviceStatus, websiteStatus: this._websiteStatus, soapStatus: data});
 	}
 	handleError(err) {
 		if(err) {

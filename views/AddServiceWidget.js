@@ -24,7 +24,7 @@
 				<input type="text" name="value-to-test" />
 			</div>
 			<div class="input-set assertion-radio">
-				<radio-set v-on:change-value="handleAssertionChange" label="Assertion" selectedOption="Equals" v-bind:options="['Equals', 'Greater Than', 'Less Than', 'String Not Empty', 'Not Null']"></radio-set>
+				<radio-set v-on:change-value="handleAssertionChange" label="Assertion" selectedOption="Equals" v-bind:options="['Array Longer Than', 'Equals', 'Greater Than', 'Less Than', 'String Not Empty', 'Not Null']"></radio-set>
 			</div>
 			<div class="input-set">
 				<span class="input-label">Expected Result</span>
@@ -77,7 +77,8 @@
 				var assertion = $this.find(".assertion-radio .radio-options").attr("data-selected");
 				var expectation = $this.find("input[name='expected-result']").val();
 				var name = $(".add-widget input[name='name']").val();
-				sup.addMonitor({monitorType: "Rest Service", url: url, verb: verb, headers: headers, body: body, assertion: assertion, expectation: expectation, name: name});
+				var query = $this.find("input[name='value-to-test']").val();
+				sup.addMonitor({monitorType: "Rest Service", url: url, verb: verb, headers: headers, body: body, assertion: assertion, expectation: expectation, name: name, query: query});
 				this.$emit('cancel');
 			},
 			handleCancel: function() {
