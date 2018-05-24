@@ -2,12 +2,19 @@
 	var componentName = 'dashboard';
 	var s = `
 		<div class="dashboard">
-			<button class="add-monitor-button pull-right" v-if="!isAddWidgetVisible" v-on:click="handleAddWidget">
-				<span class="icon"><i class="fas fa-plus"></i></span>
-				<span class="label">Add Monitor</span>
-			</button>
+			<div class="nav-buttons">
+				<button class="play-slideshow-button pull-right" v-on:click="handlePlaySlideshow">
+					<span class="icon"><i class="fas fa-tv"></i></span>
+					<span class="label">Play Slideshow</span>
+				</button>
+				<button class="add-monitor-button pull-right" v-if="!isAddWidgetVisible" v-on:click="handleAddWidget">
+					<span class="icon"><i class="fas fa-plus"></i></span>
+					<span class="label">Add Monitor</span>
+				</button>
+			</div>
 			<add-widget v-on:cancel="handleCancelAddWidget" v-if="isAddWidgetVisible"></add-widget>
 			<monitor-list></monitor-list>
+			<active-monitors></active-monitors>
 		</div>
 	`;
 	
@@ -27,6 +34,9 @@
 			},
 			handleCancelAddWidget: function() {
 				this.isAddWidgetVisible = false;
+			},
+			handlePlaySlideshow: function() {
+				sup.playSlideshow();
 			}
 		}
 	});

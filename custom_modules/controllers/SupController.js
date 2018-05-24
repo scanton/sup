@@ -2,13 +2,23 @@ module.exports = class SupController extends EventEmitter {
 
 	constructor(controllers, models) {
 		super();
+		this.jiraMonitorController = controllers.jiraMonitorController;
+		this.serviceMonitorController = controllers.serviceMonitorController;
+		this.websiteMonitorController = controllers.websiteMonitorController;
+		this.jiraMonitorController.subscribe("status", this.handleJiraStatusData.bind(this));
+		this.serviceMonitorController.subscribe("status", this.handleServiceStatusData.bind(this));
+		this.websiteMonitorController.subscribe("status", this.handleWebsiteStatusData.bind(this));
 		this.viewController = controllers.viewController;
 		this.configModel = models.configModel;
 		this.configModel.subscribe("data", this.handleConfigData.bind(this));
 		this.cookieModel = models.cookieModel;
+		this.projectsModel = models.projectsModel;
+		this.settingsModel = models.settingsModel;
 		this._controllers = controllers;
 		this._models = models;
-
+		this._jiraStatus = {};
+		this._serviceStatus = {};
+		this._websiteStatus = {};
 		/*
 		var request = require('request');
 
@@ -34,18 +44,36 @@ module.exports = class SupController extends EventEmitter {
 	addMonitor(details) {
 		this.configModel.addMonitor(details);
 	}
-
-	setCookie(name, value) {
-		console.log(name + ": " + value);
-	}
-
 	handleConfigData(data) {
+		if(data && data.monitors) {
+			this.jiraMonitorController.setMonitors(data.monitors.jira);
+			this.serviceMonitorController.setMonitors(data.monitors.service);
+			this.websiteMonitorController.setMonitors(data.monitors.website);
+		}
 		this._call("monitor-list", "setMonitors", data);
+	}
+	handleJiraStatusData(data) {
+		this._jiraStatus = data;
+		this._call("monitor-list", "setStatus", {jiraStatus: data, serviceStatus: this._serviceStatus, websiteStatus: this._websiteStatus});
+	}
+	handleServiceStatusData(data) {
+		this._serviceStatus = data;
+		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: data, websiteStatus: this._websiteStatus});
+	}
+	handleWebsiteStatusData(data) {
+		this._websiteStatus = data;
+		this._call("monitor-list", "setStatus", {jiraStatus: this._jiraStatus, serviceStatus: this._serviceStatus, websiteStatus: data});
 	}
 	handleError(err) {
 		if(err) {
 			console.error(err);
 		}
+	}
+	playSlideshow() {
+		console.log("Play Slideshow");
+	}
+	setCookie(name, value) {
+		console.log(name + ": " + value);
 	}
 
 	_call(views, method, params) {

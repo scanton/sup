@@ -3,13 +3,63 @@
 		"website": [
 			{
 				"monitorType": "Website",
-				"url": "https://local.lifeplus.com/uk/en/web-page/our-company",
+				"url": "https://ww1.lifeplus.com/uk/en/web-page/our-company",
 				"query": "#footer .copyright",
 				"assertion": "String Not Empty",
 				"expectation": "",
-				"name": "Lifeplus.com (local)",
+				"name": "ww1.Lifeplus.com (uk)",
+				"createTime": 1527017574334,
+				"id": "60e4a8ee318e9f692b018191ec8c3dba"
+			},
+			{
+				"monitorType": "Website",
+				"url": "https://ww2.lifeplus.com/us/en/web-page/our-company",
+				"query": "#footer .copyright",
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "ww2.Lifeplus.com (us)",
 				"createTime": 1527017574331,
 				"id": "9f692b018191ec860e4a8ee318ec3dba"
+			},
+			{
+				"monitorType": "Website",
+				"url": "https://192.168.70.15/uk/en/web-page/our-company",
+				"query": "#footer .copyright",
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "Dev_Lab ww1",
+				"createTime": 1527105044535,
+				"id": "ed4765474f33a58ce35e34d110767c47"
+			},
+			{
+				"monitorType": "Website",
+				"url": "https://192.168.70.28/us/en/web-page/our-company",
+				"query": "#footer .copyright",
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "Dev_Lab ww2",
+				"createTime": 1527105083372,
+				"id": "41be02b9d7e4b0d0232e26889228a0d0"
+			},
+			{
+				"monitorType": "Website",
+				"url": "https://192.168.71.15/uk/en/web-page/our-company",
+				"query": "#footer .copyright",
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "Stage ww1",
+				"createTime": 1527105127358,
+				"id": "c641517540e55b0e4f11f5b54e5fa477"
+			},
+			{
+				"monitorType": "Website",
+				"url": "https://192.168.71.28/us/en/web-page/our-company",
+				"query": "#footer .copyright",
+				"assertion": "String Not Empty",
+				"expectation": "",
+				"name": "Stage ww2",
+				"createTime": 1527105152842,
+				"id": "d024292da0bd87d59c74a40dcf327bab"
 			}
 		],
 		"jira": [
