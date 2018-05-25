@@ -83,7 +83,7 @@
 				"body": [],
 				"assertion": "Array Longer Than",
 				"expectation": "1",
-				"name": "Access Service (uk)",
+				"name": "LPASAPAccess (uk)",
 				"createTime": 1527019623666,
 				"id": "2e2f0eab9476100c71b204b1adb1346d"
 			},
@@ -95,7 +95,7 @@
 				"body": [],
 				"assertion": "Array Longer Than",
 				"expectation": "1",
-				"name": "Access Service (us)",
+				"name": "LPASAPAccess (us)",
 				"createTime": 1527019623655,
 				"id": "4761b204b12e2f0eab9adb1346d100c7"
 			},
