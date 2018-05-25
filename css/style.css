@@ -75,6 +75,9 @@ button.most-likely-action:active .icon {
 .pull-right {
 	float: right;
 }
+.icon-button {
+	cursor: pointer;
+}
 .work-area {
 	position: absolute;
 	top: 0;
@@ -82,6 +85,19 @@ button.most-likely-action:active .icon {
 	left: 0;
 	right: 0;
 	overflow: scroll;
+}
+.settings-panel {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: -350px;
+	width: 300px;
+	background: #eee;
+	padding: 1em;
+	-webkit-transition: all 0.3s ease;
+}
+.settings-is-visible .settings-panel {
+	right: 0;
 }
 .footer-bar {
 	position: absolute;
@@ -127,6 +143,10 @@ button.most-likely-action:active .icon {
 }
 .dashboard .nav-buttons {
 	margin: 10px 0;
+	-webkit-transition: all 0.3s ease;
+}
+.dashboard.settings-is-visible .nav-buttons {
+	margin-right: 330px;
 }
 .dashboard .nav-buttons button {
 	margin-left: 1em;
@@ -145,6 +165,10 @@ button.most-likely-action:active .icon {
 	bottom: 26px;
 	left: 300px;
 	border-radius: 20px;
+	-webkit-transition: all 0.3s ease;
+}
+.dashboard.settings-is-visible .active-monitors {
+	margin-right: 320px;
 }
 ul.radio-options {
 	border: 1px solid #CCC;
@@ -153,7 +177,6 @@ ul.radio-options {
 	padding: .25em;
 	border-radius: 15px;
 	background: linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(228,228,228,1) 37%, rgba(221,221,221,1) 100%);
-	
 }
 ul.radio-options li {
 	display: inline-block;
@@ -231,6 +254,13 @@ ul.radio-options li.selected {
 .input-collection .input-set, .name-value-mulit-input {
 	margin-bottom: 10px;
 }
+.add-widget {
+	-webkit-transition: all 0.3s ease;
+	margin: 0;
+}
+.settings-is-visible .add-widget {
+	margin-right: 320px;
+}
 .rest-verb-selector, .add-widget {
 	text-align: center;
 	position: absolute;
@@ -299,8 +329,10 @@ ul.radio-options li.selected {
 .monitor-list .monitor-group .monitor .response-time {
 	position: absolute;
 	bottom: 0;
-	left: 18px;
+	left: 0;
 	font-size: 8pt;
+	text-align: center;
+	width: 52px;
 }
 .monitor-list .monitor-group .monitor:active {
 	background: #EEE;

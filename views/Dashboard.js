@@ -1,7 +1,7 @@
 (function() {
 	var componentName = 'dashboard';
 	var s = `
-		<div class="dashboard">
+		<div v-bind:class="{'settings-is-visible': settingsIsVisible}" class="dashboard">
 			<div class="nav-buttons">
 				<button class="play-slideshow-button pull-right" v-on:click="handlePlaySlideshow">
 					<span class="icon"><i class="fas fa-tv"></i></span>
@@ -20,6 +20,7 @@
 			<add-widget v-on:cancel="handleCancelAddWidget" v-if="isAddWidgetVisible"></add-widget>
 			<monitor-list></monitor-list>
 			<active-monitors v-show="!isAddWidgetVisible"></active-monitors>
+			<settings-panel></settings-panel>
 		</div>
 	`;
 	
@@ -30,7 +31,8 @@
 		template: s,
 		data: function() {
 			return {
-				isAddWidgetVisible: false
+				isAddWidgetVisible: false,
+				settingsIsVisible: false
 			}
 		},
 		methods: {
@@ -42,6 +44,9 @@
 			},
 			handlePlaySlideshow: function() {
 				sup.playSlideshow();
+			},
+			toggleSettings: function() {
+				this.settingsIsVisible = !this.settingsIsVisible;
 			}
 		}
 	});

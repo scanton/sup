@@ -2,7 +2,9 @@
 	var componentName = 'main-nav';
 	var s = `
 		<div class="main-nav">
-		&nbsp;
+			<div v-on:click="handleToggleSettings" class="pull-right icon-button">
+				<i class="fas fa-ellipsis-h"></i>
+			</div>
 		</div>
 	`;
 	
@@ -13,6 +15,9 @@
 		template: s,
 		data: function() {
 			return {
+				handleToggleSettings: function() {
+					sup.toggleSettings();
+				}
 			}
 		},
 		methods: {

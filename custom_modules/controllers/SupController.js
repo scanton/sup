@@ -83,6 +83,9 @@ module.exports = class SupController extends EventEmitter {
 	setCookie(name, value) {
 		console.log(name + ": " + value);
 	}
+	toggleSettings() {
+		this._call("dashboard", "toggleSettings");
+	}
 
 	_call(views, method, params) {
 		if(this.viewController) {
