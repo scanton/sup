@@ -64,6 +64,7 @@ module.exports = class SupController extends EventEmitter {
 	}
 	handleMonitorHistoryUpdate(data) {
 		console.log(data);
+
 	}
 	handleServiceStatusData(data) {
 		this._serviceStatus = data;
@@ -87,6 +88,9 @@ module.exports = class SupController extends EventEmitter {
 	}
 	setCookie(name, value) {
 		console.log(name + ": " + value);
+	}
+	showPingHistory(monitor) {
+		this._call("active-monitors", "viewMonitor", {monitor: this._strip(monitor), history: this.monitorHistoryModel.getHistory(monitor.id)});
 	}
 	toggleSettings() {
 		this._call("dashboard", "toggleSettings");

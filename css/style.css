@@ -159,13 +159,16 @@ button.most-likely-action:active .icon {
 }
 .dashboard .active-monitors {
 	position: absolute;
-	border: 2px dashed #999;
 	top: 72px;
 	right: 26px;
 	bottom: 26px;
 	left: 300px;
 	border-radius: 20px;
 	-webkit-transition: all 0.3s ease;
+}
+.dashboard .active-monitors .last-ping-time {
+	font-size: 45pt;
+	font-weight: 500;
 }
 .dashboard.settings-is-visible .active-monitors {
 	margin-right: 320px;

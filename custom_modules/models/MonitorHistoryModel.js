@@ -2,6 +2,12 @@ module.exports = class MonitorHistoryModel extends AbstractModel {
 
 	constructor() {
 		super();
+		this._cache = {};
+	}
+	getHistory(id) {
+		if(this._cache[id]) {
+			return this._strip(this._cache[id]);
+		}
 	}
 	recordPing(monitor, pingTime) {
 		if(monitor && monitor.id && pingTime) {
@@ -13,12 +19,12 @@ module.exports = class MonitorHistoryModel extends AbstractModel {
 				} else {
 					history = data;
 				}
-
 				history.push(pingTime);
-				if(history.length > 4000) {
+				while(history.length > 4000) {
 					history.shift();
 				}
 				this.fs.outputJsonSync(path, history, { spaces: '\t' });
+				this._cache[monitor.id] = history;
 				this.dispatchEvent("data", this._strip({name: monitor.name, id: monitor.id, history: history}));
 			}.bind(this));
 		}

@@ -5,28 +5,28 @@
 			<h2>Monitors</h2>
 			<div v-if="websiteMonitors.length" class="monitor-group website-monitor-group">
 				<h3>Websites</h3>
-				<div v-on:click="handleShowWebsiteDetail(monitor.id)" v-for="monitor in websiteMonitors" v-bind:data-id="monitor.id" class="monitor website-monitor">
+				<div v-on:click="handleShowMonitorDetail(monitor)" v-for="monitor in websiteMonitors" v-bind:data-id="monitor.id" class="monitor website-monitor">
 					<led-indicator v-bind:status="getWebsiteStatus(monitor)"></led-indicator> {{monitor.name}}
 					<div class="response-time">{{getResponseTime(monitor)}}</div>
 				</div>
 			</div>
 			<div v-if="soapMonitors.length" class="monitor-group soap-service-monitor-group">
 				<h3>Soap Services</h3>
-				<div v-on:click="handleShowSoapDetail(monitor.id)" v-for="monitor in soapMonitors" v-bind:data-id="monitor.id" class="monitor soap-service-monitor">
+				<div v-on:click="handleShowMonitorDetail(monitor)" v-for="monitor in soapMonitors" v-bind:data-id="monitor.id" class="monitor soap-service-monitor">
 					<led-indicator v-bind:status="getSoapStatus(monitor)"></led-indicator> {{monitor.name}}
 					<div class="response-time">{{getResponseTime(monitor)}}</div>
 				</div>
 			</div>
 			<div v-if="serviceMonitors.length" class="monitor-group service-monitor-group">
 				<h3>Rest Services</h3>
-				<div v-on:click="handleShowServiceDetail(monitor.id)" v-for="monitor in serviceMonitors" v-bind:data-id="monitor.id" class="monitor service-monitor">
+				<div v-on:click="handleShowMonitorDetail(monitor)" v-for="monitor in serviceMonitors" v-bind:data-id="monitor.id" class="monitor service-monitor">
 					<led-indicator v-bind:status="getServiceStatus(monitor)"></led-indicator> {{monitor.name}}
 					<div class="response-time">{{getResponseTime(monitor)}}</div>
 				</div>
 			</div>
 			<div v-if="jiraMonitors.length" class="monitor-group jira-monitor-group">
 				<h3>Jira</h3>
-				<div v-on:click="handleShowJiraDetail(monitor.id)" v-for="monitor in jiraMonitors" v-bind:data-id="monitor.id" class="monitor jira-monitor">
+				<div v-on:click="handleShowMonitorDetail(monitor)" v-for="monitor in jiraMonitors" v-bind:data-id="monitor.id" class="monitor jira-monitor">
 					<led-indicator v-bind:status="getJiraStatus(monitor)"></led-indicator> {{monitor.name}}
 					<div class="response-time">{{getResponseTime(monitor)}}</div>
 				</div>
@@ -132,17 +132,8 @@
 				}
 				return "";
 			},
-			handleShowJiraDetail: function(id) {
-				console.log(id);
-			},
-			handleShowServiceDetail: function(id) {
-				console.log(id);
-			},
-			handleShowSoapDetail: function(id) {
-				console.log(id);
-			},
-			handleShowWebsiteDetail: function(id) {
-				console.log(id);
+			handleShowMonitorDetail: function(monitor) {
+				sup.showPingHistory(monitor);
 			},
 			setMonitors: function(data) {
 				if(data && data.monitors) {
