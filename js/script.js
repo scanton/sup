@@ -8,6 +8,7 @@ const AbstractModel = require(__dirname + '/custom_modules/abstracts/AbstractMod
 const AbstractMonitorController = require(__dirname + '/custom_modules/abstracts/AbstractMonitorController.js');
 const ConfigModel = require(__dirname + '/custom_modules/models/ConfigModel.js');
 const CookieModel = require(__dirname + '/custom_modules/models/CookieModel.js');
+const MonitorHistoryModel = require(__dirname + '/custom_modules/models/MonitorHistoryModel.js');
 const ProjectsModel = require(__dirname + '/custom_modules/models/ProjectsModel.js');
 const SettingsModel = require(__dirname + '/custom_modules/models/SettingsModel.js');
 const JiraMonitorController = require(__dirname + '/custom_modules/controllers/JiraMonitorController.js');
@@ -17,19 +18,21 @@ const SoapMonitorController = require(__dirname + '/custom_modules/controllers/S
 const SupController = require(__dirname + '/custom_modules/controllers/SupController.js');
 const ViewController = require(__dirname + '/custom_modules/controllers/ViewController.js');
 const viewController = new ViewController();
+const monitorHistoryModel = new MonitorHistoryModel();
 
 const views = {
 	viewController: viewController,
-	jiraMonitorController: new JiraMonitorController(),
-	serviceMonitorController: new ServiceMonitorController(),
-	websiteMonitorController: new WebsiteMonitorController(),
-	soapMonitorController: new SoapMonitorController()
+	jiraMonitorController: new JiraMonitorController(monitorHistoryModel),
+	serviceMonitorController: new ServiceMonitorController(monitorHistoryModel),
+	websiteMonitorController: new WebsiteMonitorController(monitorHistoryModel),
+	soapMonitorController: new SoapMonitorController(monitorHistoryModel)
 };
 const models = {
 	configModel: new ConfigModel(), 
 	cookieModel: new CookieModel(),
 	projectsModel: new ProjectsModel(),
-	settingsModel: new SettingsModel()
+	settingsModel: new SettingsModel(),
+	monitorHistoryModel: monitorHistoryModel
 };
 const sup = new SupController(views, models);
 

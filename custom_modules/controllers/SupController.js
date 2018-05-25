@@ -14,6 +14,8 @@ module.exports = class SupController extends EventEmitter {
 		this.configModel = models.configModel;
 		this.configModel.subscribe("data", this.handleConfigData.bind(this));
 		this.cookieModel = models.cookieModel;
+		this.monitorHistoryModel = models.monitorHistoryModel;
+		this.monitorHistoryModel.subscribe("data", this.handleMonitorHistoryUpdate);
 		this.projectsModel = models.projectsModel;
 		this.settingsModel = models.settingsModel;
 		this._controllers = controllers;
@@ -59,6 +61,9 @@ module.exports = class SupController extends EventEmitter {
 	handleJiraStatusData(data) {
 		this._jiraStatus = data;
 		this._call("monitor-list", "setStatus", {jiraStatus: data, serviceStatus: this._serviceStatus, websiteStatus: this._websiteStatus, soapStatus: this._soapStatus});
+	}
+	handleMonitorHistoryUpdate(data) {
+		console.log(data);
 	}
 	handleServiceStatusData(data) {
 		this._serviceStatus = data;

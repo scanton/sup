@@ -3,7 +3,7 @@ module.exports = class AbstractMonitorController extends EventEmitter {
 	constructor() {
 		super();
 		this._monitors = [];
-		this._testInterval = 300000;
+		this._testInterval = 150000;
 		this._status = {};
 		this._hasMonitors = false;
 	}

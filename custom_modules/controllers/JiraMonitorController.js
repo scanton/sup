@@ -1,6 +1,7 @@
 module.exports = class JiraMonitorController extends AbstractMonitorController {
 
-	constructor() {
+	constructor(historyModel) {
 		super();
+		this.historyModel = historyModel;
 	}
 }

@@ -1,7 +1,8 @@
 module.exports = class ServiceMonitorController extends AbstractMonitorController {
 
-	constructor() {
+	constructor(historyModel) {
 		super();
+		this.historyModel = historyModel;
 		this.request = require('request');
 	}
 	_checkMonitor(detail, callback) {
@@ -28,6 +29,9 @@ module.exports = class ServiceMonitorController extends AbstractMonitorControlle
 						var result = JSON.parse(html);
 					}
 					var responseTime = new Date().getTime();
+					if(this.historyModel) {
+						this.historyModel.recordPing(detail, responseTime - requestTime);
+					}
 					var passedTest = false;
 					if(detail.assertion == "Array Longer Than") {
 						passedTest = result && result.length && result.length > Number(detail.expectation);

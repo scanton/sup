@@ -1,7 +1,8 @@
 module.exports = class WebsiteMonitorController extends AbstractMonitorController {
 
-	constructor() {
+	constructor(historyModel) {
 		super();
+		this.historyModel = historyModel;
 		this.request = require('request');
 		this.cheerio = require('cheerio');
 	}
@@ -10,6 +11,9 @@ module.exports = class WebsiteMonitorController extends AbstractMonitorControlle
 			var requestTime = new Date().getTime();
 			this.request(detail.url, (error, response, html) => {
 				var responseTime = new Date().getTime();
+				if(this.historyModel) {
+					this.historyModel.recordPing(detail, responseTime - requestTime);
+				}
 				var $site = this.cheerio.load(html);
 				var testValue = $site(detail.query).text();
 				var passedTest = false;
