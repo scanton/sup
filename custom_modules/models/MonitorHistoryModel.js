@@ -23,7 +23,7 @@ module.exports = class MonitorHistoryModel extends AbstractModel {
 				while(history.length > 4000) {
 					history.shift();
 				}
-				this.fs.outputJsonSync(path, history, { spaces: '\t' });
+				this.fs.outputJsonSync(path, history);
 				this._cache[monitor.id] = history;
 				this.dispatchEvent("data", this._strip({name: monitor.name, id: monitor.id, history: history}));
 			}.bind(this));
