@@ -3,6 +3,12 @@
 	var s = `
 		<div class="settings-panel">
 			<h2>Settings</h2>
+			<div class="settings-group">
+				<on-off-switch></on-off-switch>
+			</div>
+			<div class="settings-group">
+				<check-box></check-box>
+			</div>
 		</div>
 	`;
 	

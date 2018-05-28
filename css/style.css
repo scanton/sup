@@ -75,6 +75,53 @@ button.most-likely-action:active .icon {
 .pull-right {
 	float: right;
 }
+.on-off-switch {
+	cursor: pointer;
+	width: 75px;
+	overflow: hidden;
+	border: 1px solid #999;
+	border-radius: 20px;
+	padding: .5em;
+	box-shadow: inset 2px 2px 2px  rgba(0, 0, 0, .3);
+	-webkit-transition: all 0.3s ease-out;
+	white-space: nowrap;
+}
+.check-box {
+	font-size: 28pt;
+	cursor: pointer;
+	-webkit-transition: all 0.3s ease-out;
+}
+.check-box.is-off {
+	opacity: .5;
+}
+.on-off-switch.is-on {
+	color: #666;
+	background: white;
+}
+.on-off-switch.is-off {
+	color: #666;
+	background: #DDD;
+}
+.on-off-switch .background {
+	-webkit-transition: all 0.3s ease-out;
+}
+.on-off-switch.is-on .background {
+	margin-left: 7px;
+}
+.on-off-switch.is-off .background {
+	margin-left: -48px;
+}
+.on-off-switch .handle {
+	border: 1px solid #BBB;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+	-webkit-transition: all 0.3s ease;
+	width: 25px;
+	height: 25px;
+	border-radius: 15px;
+	display: inline-block;
+	margin: -10px 0 -8px 0;
+	background: linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(228,228,228,1) 37%, rgba(221,221,221,1) 100%);
+}
 .icon-button {
 	cursor: pointer;
 }
@@ -98,6 +145,9 @@ button.most-likely-action:active .icon {
 }
 .settings-is-visible .settings-panel {
 	right: 0;
+}
+.settings-panel .settings-group {
+	margin-bottom: .5em;
 }
 .footer-bar {
 	position: absolute;
@@ -166,12 +216,38 @@ button.most-likely-action:active .icon {
 	border-radius: 20px;
 	-webkit-transition: all 0.3s ease;
 }
-.dashboard .active-monitors .last-ping-time {
-	font-size: 45pt;
+.dashboard .active-monitors .dashboard-group {
+	text-align: center;
+	display: inline-block;
+	padding: 1em;
+}
+.dashboard .active-monitors .value {
+	font-size: 65pt;
+	font-weight: 800;
+}
+.dashboard .active-monitors .value .icon {
+	font-size: 33pt;
+	margin-top: -20px;
+	display: inline-block;
+}
+.dashboard .active-monitors .value.lesser-value {
+	font-size: 40pt;
 	font-weight: 500;
+	padding-bottom: 7px;
+}
+.dashboard .active-monitors .dashboard-group .label {
+	font-size: 12pt;
+	letter-spacing: 1px;
+	margin-top: -18px;
+	font-weight: 900;
 }
 .dashboard.settings-is-visible .active-monitors {
 	margin-right: 320px;
+}
+.dashboard .active-monitors h2 {
+	font-size: 32pt;
+	font-weight: 200;
+	letter-spacing: 0;
 }
 ul.radio-options {
 	border: 1px solid #CCC;
@@ -378,4 +454,32 @@ ul.radio-options li.selected {
 	border-radius: 50%;
 	background: white;
 	opacity: .75;
+}
+#active-monitors-chart {
+	max-height: 300px;
+}
+.slider-bar {
+	position: relative;
+}
+.slider-bar .rail {
+	position: absolute;
+	left: 20px;
+	right: 50px;
+	top: 10px;
+	bottom: 10px;
+	border: 1px solid #999;
+	background: #888;
+	border-radius: 5px;
+}
+.slider-bar .handle {
+	position: absolute;
+	top: 0;
+	left: 100px;
+	border: 1px solid #BBB;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+	-webkit-transition: all 0.3s ease;
+	width: 15px;
+	height: 20px;
+	border-radius: 15px;
+	background: linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(228,228,228,1) 37%, rgba(221,221,221,1) 100%);
 }
