@@ -19,7 +19,7 @@
 			</div>
 			<add-widget v-on:cancel="handleCancelAddWidget" v-if="isAddWidgetVisible"></add-widget>
 			<monitor-list></monitor-list>
-			<active-monitors v-show="!isAddWidgetVisible"></active-monitors>
+			<monitor-details v-show="!isAddWidgetVisible"></monitor-details>
 			<settings-panel></settings-panel>
 		</div>
 	`;

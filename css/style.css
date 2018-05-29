@@ -207,7 +207,7 @@ button.most-likely-action:active .icon {
 .settings-is-visible .dashboard {
 	right: 300px;
 }
-.dashboard .active-monitors {
+.dashboard .monitor-details {
 	position: absolute;
 	top: 72px;
 	right: 26px;
@@ -216,32 +216,32 @@ button.most-likely-action:active .icon {
 	border-radius: 20px;
 	-webkit-transition: all 0.3s ease;
 }
-.dashboard .active-monitors .dashboard-group {
+.dashboard .monitor-details .dashboard-group {
 	text-align: center;
 	display: inline-block;
 	padding: 1em;
 }
-.dashboard .active-monitors .value {
+.dashboard .monitor-details .value {
 	font-size: 65pt;
 	font-weight: 800;
 }
-.dashboard .active-monitors .value .icon {
+.dashboard .monitor-details .value .icon {
 	font-size: 33pt;
 	margin-top: -20px;
 	display: inline-block;
 }
-.dashboard .active-monitors .value.lesser-value {
+.dashboard .monitor-details .value.lesser-value {
 	font-size: 40pt;
 	font-weight: 500;
 	padding-bottom: 7px;
 }
-.dashboard .active-monitors .dashboard-group .label {
+.dashboard .monitor-details .dashboard-group .label {
 	font-size: 12pt;
 	letter-spacing: 1px;
 	margin-top: -18px;
 	font-weight: 900;
 }
-.dashboard.settings-is-visible .active-monitors {
+.dashboard.settings-is-visible .monitor-details {
 	margin-right: 320px;
 }
 .dashboard .active-monitors h2 {

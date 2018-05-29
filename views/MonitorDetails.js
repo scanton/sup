@@ -1,7 +1,7 @@
 (function() {
-	var componentName = 'active-monitors';
+	var componentName = 'monitor-details';
 	var s = `
-		<div class="active-monitors">
+		<div class="monitor-details">
 			<div v-show="history.length">
 				<h2>
 					{{monitor.name}}
@@ -81,7 +81,7 @@
 				
 				var a = [];
 				var l = this.history.length;
-				var begin = l - 30;
+				var begin = l - 40;
 				if(begin < 0) {
 					begin = 0;
 				}

@@ -90,7 +90,7 @@ module.exports = class SupController extends EventEmitter {
 		console.log(name + ": " + value);
 	}
 	showPingHistory(monitor) {
-		this._call("active-monitors", "viewMonitor", {monitor: this._strip(monitor), history: this.monitorHistoryModel.getHistory(monitor.id)});
+		this._call("monitor-details", "viewMonitor", {monitor: this._strip(monitor), history: this.monitorHistoryModel.getHistory(monitor.id)});
 	}
 	toggleSettings() {
 		this._call("dashboard", "toggleSettings");
