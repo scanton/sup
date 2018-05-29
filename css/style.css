@@ -457,9 +457,15 @@ ul.radio-options li.selected {
 }
 #active-monitors-chart {
 	max-height: 300px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+	user-select: none;
 }
 .slider-bar {
 	position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+	user-select: none;
 }
 .slider-bar .rail {
 	position: absolute;
@@ -470,16 +476,23 @@ ul.radio-options li.selected {
 	border: 1px solid #999;
 	background: #888;
 	border-radius: 5px;
+	height: 2px;
 }
 .slider-bar .handle {
 	position: absolute;
 	top: 0;
-	left: 100px;
 	border: 1px solid #BBB;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
-	-webkit-transition: all 0.3s ease;
 	width: 15px;
 	height: 20px;
 	border-radius: 15px;
 	background: linear-gradient(to bottom, rgba(245,245,245,1) 0%, rgba(228,228,228,1) 37%, rgba(221,221,221,1) 100%);
+	cursor: pointer;
+}
+.slider-bar .handle-label {
+	position: absolute;
+	top: -18px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+	user-select: none;
 }

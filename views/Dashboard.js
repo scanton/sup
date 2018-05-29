@@ -20,7 +20,7 @@
 			<add-widget v-on:cancel="handleCancelAddWidget" v-if="isAddWidgetVisible"></add-widget>
 			<monitor-list></monitor-list>
 			<monitor-details v-show="!isAddWidgetVisible"></monitor-details>
-			<settings-panel></settings-panel>
+			<settings-panel ref="slider"></settings-panel>
 		</div>
 	`;
 	

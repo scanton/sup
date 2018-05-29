@@ -23,7 +23,7 @@
 					<div class="label">maximum</div>
 				</div>
 				<div id="active-monitors-chart"></div>
-				<slider-bar min="5" max="4000" default="10"></slider-bar>
+				<slider-bar v-on:change-value="handleHistoryLengthChange" min="5" max="100" default="40"></slider-bar>
 			</div>
 		</div>
 	`;
@@ -35,8 +35,11 @@
 		template: s,
 		data: function() {
 			return {
+				chart: null,
+				data: null,
 				monitor: {},
-				history: []
+				history: [],
+				historyLength: 40
 			}
 		},
 		methods: {
@@ -69,6 +72,12 @@
 				}
 				return max;
 			},
+			handleHistoryLengthChange: function(val) {
+				this.historyLength = val;
+				if(this.data) {
+					this.viewMonitor(this.data);
+				}
+			},
 			isQuickResponse: function() {
 				var average = this.getAverage();
 				var response = this.getLastResponse();
@@ -76,20 +85,19 @@
 				return response < average;
 			},
 			viewMonitor: function(data) {
+				this.data = data;
 				this.monitor = data.monitor;
 				this.history = data.history;
 				
 				var a = [];
 				var l = this.history.length;
-				var begin = l - 40;
+				var begin = l - this.historyLength;
 				if(begin < 0) {
 					begin = 0;
 				}
 				for(var i = begin; i < l; i++) {
 					a.push({i: i, value: this.history[i]});
 				}
-
-				$("#active-monitors-chart").html("");
 				config = {
 					data: a,
 					xkey: 'i',
@@ -99,14 +107,20 @@
 					hideHover: 'auto',
 					behaveLikeLine: true,
 					resize: true,
+					smooth: false,
 					//pointFillColors:['#ffffff'],
 					//pointStrokeColors: ['black'],
 					lineColors:['gray']
 				};
 				config.element = 'active-monitors-chart';
-				setTimeout(function() {
-					Morris.Area(config);	
-				}, 10);
+				if(this.chart) {
+					this.chart.setData(config.data);
+				} else {
+					$("#active-monitors-chart").html("");
+					setTimeout(() => {
+						this.chart = Morris.Area(config);	
+					}, 10);
+				}
 			}
 		}
 	});

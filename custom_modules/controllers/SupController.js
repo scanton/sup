@@ -63,8 +63,7 @@ module.exports = class SupController extends EventEmitter {
 		this._call("monitor-list", "setStatus", {jiraStatus: data, serviceStatus: this._serviceStatus, websiteStatus: this._websiteStatus, soapStatus: this._soapStatus});
 	}
 	handleMonitorHistoryUpdate(data) {
-		console.log(data);
-
+		//console.log(data);
 	}
 	handleServiceStatusData(data) {
 		this._serviceStatus = data;

@@ -20,7 +20,7 @@ module.exports = class MonitorHistoryModel extends AbstractModel {
 					history = data;
 				}
 				history.push(pingTime);
-				while(history.length > 4000) {
+				while(history.length > 500) {
 					history.shift();
 				}
 				this.fs.outputJsonSync(path, history);
