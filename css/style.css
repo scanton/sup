@@ -456,9 +456,9 @@ ul.radio-options li.selected {
 	opacity: .75;
 }
 #active-monitors-chart {
-	max-height: 300px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
+	height: 300px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
 	user-select: none;
 }
 .slider-bar {

@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	`;
-	
+
 	Vue.component(componentName, {
 		created: function() {
 			viewController.registerView(componentName, this);
@@ -88,17 +88,18 @@
 				this.data = data;
 				this.monitor = data.monitor;
 				this.history = data.history;
-				
+
 				var a = [];
 				var l = this.history.length;
 				var begin = l - this.historyLength;
+				var now = new Date().getTime();
 				if(begin < 0) {
 					begin = 0;
 				}
 				for(var i = begin; i < l; i++) {
-					a.push({i: i, value: this.history[i]});
+					a.push({i: now - ((l - i) * (2.5 * 60 * 1000)), value: this.history[i]});
 				}
-				config = {
+				var config = {
 					data: a,
 					xkey: 'i',
 					ykeys: ['value'],
@@ -118,7 +119,7 @@
 				} else {
 					$("#active-monitors-chart").html("");
 					setTimeout(() => {
-						this.chart = Morris.Area(config);	
+						this.chart = Morris.Area(config);
 					}, 10);
 				}
 			}
